@@ -2,7 +2,7 @@ require 'socket'
 require './lib/response'
 
 PORT = 8081
-SERVER_ROOT = "/tmp/web-server/"
+SERVER_ROOT = "./tmp/web-server/"
 
 server = TCPServer.new('0.0.0.0', PORT)
 
