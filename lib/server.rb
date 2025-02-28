@@ -7,7 +7,13 @@ SERVER_ROOT = "/tmp/web-server/"
 server = TCPServer.new('0.0.0.0', PORT)
 
 def handle_connection(client)
-  request = client.readpartial(2048)
+  raw_request = client.readpartial(2048)
+  request = parse(raw_request)
+  response = prepare_response(request)
+
+  puts "#{client.peeraddr[3]} #{request.fetch(:path)} - #{response.code}"
+  response.send(client)
+
   client.close
 end
 
