@@ -1,4 +1,5 @@
 require 'socket'
+require './lib/response'
 
 PORT = 8081
 server = TCPServer.new('0.0.0.0', PORT)
